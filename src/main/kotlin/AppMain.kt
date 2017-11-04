@@ -10,9 +10,10 @@ import javafx.stage.Stage
 class AppMain : Application() {
 
     override fun start(primaryStage: Stage) {
+        primaryStage.title = "OnlyOneOnlyBird"
+        primaryStage.isResizable = false
 
-        val fxmlURL = javaClass.getResource("fxml/main.fxml")
-        val pane = FXMLLoader.load<Pane>(fxmlURL)
+        val pane = FXMLLoader.load<Pane>(javaClass.getResource("fxml/main.fxml"))
 
         val scene = Scene(pane)
 
