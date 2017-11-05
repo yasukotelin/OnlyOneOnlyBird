@@ -17,6 +17,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
+                  <MenuItem mnemonicParsing="false" text="OnlyOneMode" onAction="#chengeIsOnlyOneMode" />
               <MenuItem mnemonicParsing="false" onAction="#doClose" text="Close" />
             </items>
           </Menu>

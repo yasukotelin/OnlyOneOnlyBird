@@ -17,11 +17,20 @@ class MainController {
     private var state = RouletteState.STOP
     private var timer: Timer? = null
     private var nameList = NameListManager.load()
+    private var isOnlyOneMode = false
 
     /** アプリケーション終了イベント */
     @FXML fun doClose() {
         timer?.cancel()
         Platform.exit()
+    }
+
+    /** OnlyOneモードの切り替えイベント */
+    @FXML fun chengeIsOnlyOneMode() {
+        isOnlyOneMode = when (isOnlyOneMode) {
+            true -> false
+            false -> true
+        }
     }
 
     /** 抽選開始 */
@@ -44,9 +53,17 @@ class MainController {
     private fun stopRoulette() {
         timer?.cancel()
         btn.text = "Fly High Again!"
-        val target = Random().nextInt(nameList.size)
-        label.text = "当選：${nameList[target]}"
+        label.text = "当選：${getTheWinner()}"
         state = RouletteState.STOP
+    }
+
+    /** 当選者を返却する */
+    private fun getTheWinner(): String {
+        return if (isOnlyOneMode) {
+            "藤島さん"
+        } else {
+            nameList[Random().nextInt(nameList.size)]
+        }
     }
 
     /** ルーレット描画タスククラス */
