@@ -2,9 +2,16 @@ package controller
 
 import javafx.application.Platform
 import javafx.fxml.FXML
+import javafx.fxml.FXMLLoader
+import javafx.scene.Scene
 import javafx.scene.control.Button
 import javafx.scene.control.Label
+import javafx.scene.layout.Pane
+import javafx.stage.Modality
+import javafx.stage.Stage
 import java.util.*
+
+
 
 class MainController {
 
@@ -31,6 +38,18 @@ class MainController {
             true -> false
             false -> true
         }
+    }
+
+    @FXML fun openOnlyOneSettingModal() {
+        val modal = Stage()
+//
+        val fxmlLoader = FXMLLoader(javaClass.getResource("fxml/OnlyOneSetting.fxml"))
+        val pane = fxmlLoader.load<Pane>()
+//        modal.scene = Scene(pane)
+
+        modal.initModality(Modality.WINDOW_MODAL)
+//        modal.initOwner(label.scene.window)
+        modal.show()
     }
 
     /** 抽選開始 */

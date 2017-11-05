@@ -13,7 +13,8 @@ class AppMain : Application() {
         primaryStage.title = "OnlyOneOnlyBird"
         primaryStage.isResizable = false
 
-        val pane = FXMLLoader.load<Pane>(javaClass.getResource("fxml/main.fxml"))
+        val fxmlLoader = FXMLLoader(javaClass.getResource("fxml/main.fxml"))
+        val pane = fxmlLoader.load<Pane>()
 
         val scene = Scene(pane)
 
