@@ -26,7 +26,7 @@ class MainController {
     }
 
     /** OnlyOneモードの切り替えイベント */
-    @FXML fun chengeIsOnlyOneMode() {
+    @FXML fun changeIsOnlyOneMode() {
         isOnlyOneMode = when (isOnlyOneMode) {
             true -> false
             false -> true
