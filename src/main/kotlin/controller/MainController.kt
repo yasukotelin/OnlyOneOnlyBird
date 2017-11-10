@@ -40,15 +40,12 @@ class MainController {
         }
     }
 
+    /** OnlyOneモードの設定モーダル表示イベント */
     @FXML fun openOnlyOneSettingModal() {
-        val modal = Stage()
-//
-        val fxmlLoader = FXMLLoader(javaClass.getResource("fxml/OnlyOneSetting.fxml"))
+        val fxmlLoader = FXMLLoader(javaClass.getResource("/fxml/OnlyOneSetting.fxml"))
         val pane = fxmlLoader.load<Pane>()
-//        modal.scene = Scene(pane)
-
-        modal.initModality(Modality.WINDOW_MODAL)
-//        modal.initOwner(label.scene.window)
+        val modal = Stage()
+        modal.scene = Scene(pane)
         modal.show()
     }
 
