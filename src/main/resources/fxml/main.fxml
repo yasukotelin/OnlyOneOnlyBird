@@ -17,8 +17,8 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem mnemonicParsing="false" text="OnlyOneMode" onAction="#openOnlyOneSettingModal" />
-              <MenuItem mnemonicParsing="false" onAction="#doClose" text="Close" />
+                  <MenuItem mnemonicParsing="false" onAction="#openSettingModal" text="Setting" />
+              <MenuItem mnemonicParsing="false" onAction="#doClose" text="Exit" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
