@@ -7,7 +7,7 @@
 * gradleをインストールしている場合
 
 ```bash
-clone 
+clone https://github.com/yasuBrosK/OnlyOneOnlyBird.git
 cd OnlyOneOnlyBird
 gradle build
 gradle run
@@ -15,7 +15,7 @@ gradle run
 * gradleをインストールしていない場合は、gradleをインストールするか、プロジェクト内のgradlewを使ってビルド実行可能です。
 
 ```bash
-clone 
+clone https://github.com/yasuBrosK/OnlyOneOnlyBird.git
 cd OnlyOneOnlyBird
 ./gradlew build
 ./gradlew run
