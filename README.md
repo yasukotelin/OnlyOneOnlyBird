@@ -4,14 +4,22 @@
 ![画面](./view.png)
 
 ## Hwo to use
-* プロジェクトをClone
-* GradleプロジェクトとしてIntelliJにてimportする
-* Run
+* gradleをインストールしている場合
+
+```bash
+clone 
+cd OnlyOneOnlyBird
+gradle build
+gradle run
+```
+* gradleをインストールしていない場合は、gradleをインストールするか、プロジェクト内のgradlewを使ってビルド実行可能です。
+
+```bash
+clone 
+cd OnlyOneOnlyBird
+./gradlew build
+./gradlew run
+```
 
 ## Setting
 * resouces/setting/name-list.txtファイルにある名簿が抽選対象者
-
-## Feature
-* 画面から抽選対象者を変更できるようにしたい
-* Aboutからアプリ情報の表示
-* 実行形式での配布
