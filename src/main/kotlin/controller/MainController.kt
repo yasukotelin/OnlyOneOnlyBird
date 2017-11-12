@@ -2,9 +2,16 @@ package controller
 
 import javafx.application.Platform
 import javafx.fxml.FXML
+import javafx.fxml.FXMLLoader
+import javafx.scene.Scene
 import javafx.scene.control.Button
 import javafx.scene.control.Label
+import javafx.scene.control.TabPane
+import javafx.stage.Modality
+import javafx.stage.Stage
 import java.util.*
+
+
 
 class MainController {
 
@@ -16,8 +23,10 @@ class MainController {
     }
     private var state = RouletteState.STOP
     private var timer: Timer? = null
-    private var nameList = NameListManager.load()
+    private var nameList = SettingResourceManager.nameListLoad()
+    private var onlyOneTargetName = SettingResourceManager.onlyOneNameLoad()
     private var isOnlyOneMode = false
+
 
     /** アプリケーション終了イベント */
     @FXML fun doClose() {
@@ -25,11 +34,32 @@ class MainController {
         Platform.exit()
     }
 
-    /** OnlyOneモードの切り替えイベント */
-    @FXML fun changeIsOnlyOneMode() {
-        isOnlyOneMode = when (isOnlyOneMode) {
-            true -> false
-            false -> true
+    /** 設定モーダル表示イベント */
+    @FXML fun openSettingModal() {
+        val fxmlLoader = FXMLLoader(javaClass.getResource("/fxml/SettingModal.fxml"))
+        val tabPane = fxmlLoader.load<TabPane>()
+        val settingCtl = fxmlLoader.getController<SettingModalController>()
+
+        val modal = Stage()
+        modal.title  = "Setting"
+        modal.initOwner(label.scene.window)
+        modal.initModality(Modality.APPLICATION_MODAL)
+        modal.isResizable = false
+        modal.scene = Scene(tabPane)
+
+        // 設定モーダルコントローラーにプロパティをセット
+        settingCtl.onlyOneTargetName.text = onlyOneTargetName
+        settingCtl.isOnlyOneActive.isSelected = isOnlyOneMode
+
+        // 設定モーダルが閉じるまでここで処理が停止する
+        modal.showAndWait()
+
+        when  {
+            settingCtl.isOnlyOneAccept -> {
+                // 設定モーダルでAcceptされているので変更を反映する
+                this.onlyOneTargetName = settingCtl.onlyOneTargetName.text
+                this.isOnlyOneMode = settingCtl.isOnlyOneActive.isSelected
+            }
         }
     }
 
@@ -60,7 +90,7 @@ class MainController {
     /** 当選者を返却する */
     private fun getTheWinner(): String {
         return if (isOnlyOneMode) {
-            "藤島さん"
+            this.onlyOneTargetName
         } else {
             nameList[Random().nextInt(nameList.size)]
         }
