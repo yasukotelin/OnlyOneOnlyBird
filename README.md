@@ -4,15 +4,20 @@
 ![画面](./view.png)
 
 ## Hwo to use
-* gradleをインストールしている場合
+* gradleのインストールは不要
+* アプリケーション内部にgradleコマンドを内包しているため
+
+#### Windows
+* Windowsの場合はgradlew.batを使う
 
 ```bash
 clone https://github.com/yasuBrosK/OnlyOneOnlyBird.git
 cd OnlyOneOnlyBird
-gradle build
-gradle run
+./gradlew.bat build
+./gradlew.bat run
 ```
-* gradleをインストールしていない場合は、gradleをインストールするか、プロジェクト内のgradlewを使ってビルド実行可能です。
+
+#### Linux/OSX
 
 ```bash
 clone https://github.com/yasuBrosK/OnlyOneOnlyBird.git
