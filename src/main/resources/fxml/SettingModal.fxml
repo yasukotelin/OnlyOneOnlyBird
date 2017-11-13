@@ -16,18 +16,18 @@
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                     <children>
-                  <TextArea layoutX="41.0" layoutY="45.0" prefHeight="153.0" prefWidth="373.0" />
+                        <Label layoutX="41.0" layoutY="17.0" text="NameList" />
+                        <TextArea fx:id="nameListTextArea" layoutX="41.0" layoutY="45.0" prefHeight="153.0" prefWidth="373.0" />
                         <Button layoutX="300.0" layoutY="213.0" mnemonicParsing="false" onAction="#onOkBtn" style="-fx-pref-width: 65px;" text="OK">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button layoutX="375.0" layoutY="213.0" mnemonicParsing="false" text="Accept">
+                        <Button fx:id="memberAcceptBtn" onAction="#onMemberAcceptBtn" layoutX="375.0" layoutY="213.0" mnemonicParsing="false" text="Accept">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                  <Label layoutX="41.0" layoutY="14.0" text="NameList" />
                     </children>
                 </AnchorPane>
             </content>

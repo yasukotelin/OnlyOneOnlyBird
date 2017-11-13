@@ -11,6 +11,8 @@ object SettingResourceManager {
      **/
     fun nameListLoad(): List<String> = File(javaClass.getResource("setting/name-list.txt").toURI()).readLines()
 
+    fun nameListSave(listString: String) = File(javaClass.getResource("setting/name-list.txt").toURI()).writeText(listString)
+
     /**
      * OnlyOneモードの名称読み込み処理
      * @return OnlyOne名称
