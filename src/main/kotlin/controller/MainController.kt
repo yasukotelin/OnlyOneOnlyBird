@@ -12,7 +12,6 @@ import javafx.stage.Stage
 import java.util.*
 
 
-
 class MainController {
 
     @FXML lateinit var label: Label
@@ -48,19 +47,39 @@ class MainController {
         modal.scene = Scene(tabPane)
 
         // 設定モーダルコントローラーにプロパティをセット
+        settingCtl.nameListTextArea.text = nameList.joinToString("\n")
         settingCtl.onlyOneTargetName.text = onlyOneTargetName
         settingCtl.isOnlyOneActive.isSelected = isOnlyOneMode
 
         // 設定モーダルが閉じるまでここで処理が停止する
         modal.showAndWait()
 
+        val isMemberAccept = settingCtl.isMemberAccept
+        val isOnlyOneAccept = settingCtl.isOnlyOneAccept
         when  {
-            settingCtl.isOnlyOneAccept -> {
-                // 設定モーダルでAcceptされているので変更を反映する
-                this.onlyOneTargetName = settingCtl.onlyOneTargetName.text
-                this.isOnlyOneMode = settingCtl.isOnlyOneActive.isSelected
+            // MemberとOnlyOne両方ともAcceptされていたとき
+            isMemberAccept && isOnlyOneAccept -> {
+                doMemberAccept(settingCtl)
+                doOnlyOneAccept(settingCtl)
             }
+            // MemberがAcceptされていたとき
+            isMemberAccept -> doMemberAccept(settingCtl)
+            // OnlyOneがAcceptされていたとき
+            isOnlyOneAccept -> doOnlyOneAccept(settingCtl)
         }
+    }
+
+    /** MemberSettingのAcceptボタンが押されていた時の処理 */
+    private fun doMemberAccept(settingCtl: SettingModalController) {
+        // 設定されたメンバー情報を画面に反映する
+        this.nameList = settingCtl.nameListTextArea.text.split("\n")
+    }
+
+    /** OnlyOneSettingのAcceptボタンが押されていた時の処理 */
+    private fun doOnlyOneAccept(settingCtl: SettingModalController) {
+        // 設定されたOnlyOne対象者を反映する
+        this.onlyOneTargetName = settingCtl.onlyOneTargetName.text
+        this.isOnlyOneMode = settingCtl.isOnlyOneActive.isSelected
     }
 
     /** 抽選開始 */
