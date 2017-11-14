@@ -17,10 +17,10 @@ object SettingResourceManager {
      * OnlyOneモードの名称読み込み処理
      * @return OnlyOne名称
      */
-    fun onlyOneNameLoad(): String = File(javaClass.getResource("setting/only-one-name").toURI()).readText()
+    fun onlyOneNameLoad(): String = File(javaClass.getResource("setting/only-one-name.txt").toURI()).readText()
 
     /**
      * OnlyOneモードの名称書き込み処理
      */
-    fun onlyOneNameSave(name: String) = File(javaClass.getResource("setting/only-one-name").toURI()).writeText(name)
+    fun onlyOneNameSave(name: String) = File(javaClass.getResource("setting/only-one-name.txt").toURI()).writeText(name)
 }
